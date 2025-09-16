@@ -5,6 +5,10 @@ import ProductShare from "@/components/custom/product-share";
 
 const ProductOptions = (props) => {
   
+  const removeProduct = (_id) => {
+    props.setProducts((prev) => prev.filter((p) => p._id !== _id));
+  }
+
   return (
     <Popover.Content w="125px">
         <Popover.CloseTrigger>
@@ -21,7 +25,7 @@ const ProductOptions = (props) => {
                             </Dialog.Positioner>
                         </Portal>
                     </Dialog.Root>
-                    <IconButton variant="outline" color="red" borderColor="transparent" >Delete<LuTrash2/></IconButton>
+                    <IconButton onClick={() => removeProduct(props.product._id)} variant="outline" color="red" borderColor="transparent" >Delete<LuTrash2/></IconButton>
                 </Stack>
             </Popover.Body>
         </Popover.CloseTrigger>
