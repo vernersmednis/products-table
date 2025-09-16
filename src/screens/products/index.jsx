@@ -1,5 +1,4 @@
 import { Stack, Table, Image, Text, HStack, Box, Flex, IconButton, Popover, Portal } from "@chakra-ui/react"
-import { LuEllipsisVertical } from "react-icons/lu";
 import { useState, useEffect } from 'react';
 import { useMeasure } from 'react-use';
 import ProductOptions from '@/components/custom/product-options';
@@ -95,21 +94,7 @@ const [products, setProducts] = useState([
                         <Table.Row>
                             <Table.ColumnHeader>Price</Table.ColumnHeader>
                             <Table.Cell textAlign="end" >
-                                <HStack textAlign="end" justifyContent="end" spacing="10px">
-                                    <Text>{product.price.toLocaleString('en-US', { style: 'currency', currency: product.currency })}</Text>
-                                    <Popover.Root size="xs" positioning={{ offset: { crossAxis: 0, mainAxis: 0 } }}>
-                                        <Popover.Trigger asChild>
-                                            <IconButton size="sm" variant="outline" color="black">
-                                                <LuEllipsisVertical />
-                                            </IconButton>
-                                        </Popover.Trigger>
-                                        <Portal>
-                                            <Popover.Positioner>
-                                                <ProductOptions product={product} setProducts={setProducts}/>
-                                            </Popover.Positioner>
-                                        </Portal>
-                                    </Popover.Root>
-                                </HStack>
+                                <ProductOptions product={product} setProducts={setProducts} />
                             </Table.Cell>
                         </Table.Row>
                     </>
@@ -144,18 +129,7 @@ const [products, setProducts] = useState([
                             <Table.Cell textAlign="end" >
                                 <HStack textAlign="end" justifyContent="end" spacing="10px">
                                     <Text>{product.price.toLocaleString('en-US', { style: 'currency', currency: product.currency })}</Text>
-                                    <Popover.Root size="xs" positioning={{ offset: { crossAxis: 0, mainAxis: 0 } }}>
-                                        <Popover.Trigger asChild>
-                                            <IconButton size="sm" variant="outline" color="black">
-                                                <LuEllipsisVertical />
-                                            </IconButton>
-                                        </Popover.Trigger>
-                                        <Portal>
-                                            <Popover.Positioner>
-                                                <ProductOptions product={product} setProducts={setProducts} />
-                                            </Popover.Positioner>
-                                        </Portal>
-                                    </Popover.Root>
+                                    <ProductOptions product={product} setProducts={setProducts} />
                                 </HStack>
                             </Table.Cell>
                         </Table.Row>
