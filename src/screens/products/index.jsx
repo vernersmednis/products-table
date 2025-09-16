@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 import { useMeasure } from 'react-use';
 import ProductOptions from '@/components/custom/product-options';
 
-const products = [
+function Products() {
+
+
+const [products, setProducts] = useState([
     {
       "_id": "67472f65d2c7c1a0cf655924",
       "price": 2599,
@@ -55,9 +58,7 @@ const products = [
       "url": "https://example.com/product/62e3b7e3b6c79f7a4bbcf366",
       "image_url": "https://github.com/Sellfy/test-assignment-frontend/raw/refs/heads/master/images/image-5.jpg"
     }
-  ]
-
-function Products() {
+  ]);
 
   // Use useMeasure for element-based responsive design
   const [measureRef, { width }] = useMeasure();
@@ -68,7 +69,7 @@ function Products() {
   }, [width]);
 
   return (
-    <Box ref={measureRef} w="100%" display="flex" justifyContent="center">
+    <Flex ref={measureRef} w="100%" justifyContent="center">
         {isMobile ? (
         <Table.Root key="outline" size="sm" variant="outline" width="fit-content">
             <Table.Body>
@@ -104,7 +105,7 @@ function Products() {
                                         </Popover.Trigger>
                                         <Portal>
                                             <Popover.Positioner>
-                                                <ProductOptions product={product}/>
+                                                <ProductOptions product={product} setProducts={setProducts}/>
                                             </Popover.Positioner>
                                         </Portal>
                                     </Popover.Root>
@@ -116,7 +117,7 @@ function Products() {
             </Table.Body>
         </Table.Root>
         ) : (
-        <Table.Root key="outline" size="sm" variant="outline" width="fit-content">
+        <Table.Root key="outline" size="sm" variant="outline" width="70%" minW="660px">
             <Table.Header>
                 <Table.Row>
                     <Table.ColumnHeader>Product</Table.ColumnHeader>
@@ -151,7 +152,7 @@ function Products() {
                                         </Popover.Trigger>
                                         <Portal>
                                             <Popover.Positioner>
-                                                <ProductOptions product={product}/>
+                                                <ProductOptions product={product} setProducts={setProducts} />
                                             </Popover.Positioner>
                                         </Portal>
                                     </Popover.Root>
@@ -163,7 +164,7 @@ function Products() {
             </Table.Body>
         </Table.Root>
         )}
-    </Box>
+    </Flex>
   )
 }
 
